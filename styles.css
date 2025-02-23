@@ -4,14 +4,7 @@ body {
   min-height: 100vh;
   padding: 2rem;
   overflow-x: hidden; /* Keeps scrolling for main content */
-  -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
-  scrollbar-width: none; /* Hide scrollbar in Firefox */
 }
-
-body::-webkit-scrollbar {
-  display: none; /* Hide scrollbar in Webkit browsers */
-}
-
 /* Starfield container for falling stars */
 .starfield {
   position: fixed;
