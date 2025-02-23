@@ -3,7 +3,7 @@ body {
   color: #fff;
   min-height: 100vh;
   padding: 2rem;
-  overflow: auto; /* Keeps scrolling for main content */
+  overflow-x: hidden; /* Keeps scrolling for main content */
   -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
   scrollbar-width: none; /* Hide scrollbar in Firefox */
 }
