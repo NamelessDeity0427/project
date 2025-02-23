@@ -3,7 +3,14 @@ body {
   color: #fff;
   min-height: 100vh;
   padding: 2rem;
-  overflow: auto; /* prevent scrollbars from falling stars */
+  overflow: auto; /* Already present, keeps scrolling enabled */
+  -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+/* Hide scrollbar in Webkit browsers (Chrome, Safari, Edge) */
+body::-webkit-scrollbar {
+  display: none;
 }
 
 .poetry-container {
