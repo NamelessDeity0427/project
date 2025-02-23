@@ -1,67 +1,150 @@
 body {
-    background: linear-gradient(to bottom, #0a192f, #000000);
-    color: #fff;
-    min-height: 100vh;
-    padding: 2rem;
-    overflow: auto; /* prevent scrollbars from falling stars */
+  background: linear-gradient(to bottom, #0a192f, #000000);
+  color: #fff;
+  min-height: 100vh;
+  padding: 2rem;
+  overflow: auto; /* prevent scrollbars from falling stars */
+}
+
+.poetry-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cosmic-text {
+  cursor: pointer;
+  color: #00ffff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.cosmic-text:hover {
+  color: #ff69b4;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 1s infinite;
+}
+
+@keyframes twinkle {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.poetry {
+  font-size: 1.2rem;
+  line-height: 2;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+/* Falling star styles */
+.falling-star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: fall linear;
+}
+
+.falling-star::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,255,255,0));
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, -50%) rotate(45deg);
+}
+
+@keyframes fall {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0);
   }
-  .poetry-container {
-    max-width: 800px;
-    margin: 0 auto;
+  100% {
+    opacity: 0;
+    transform: translate(var(--fall-distance), var(--fall-distance));
   }
-  .cosmic-text {
-    cursor: pointer;
-    color: #00ffff;
-    text-decoration: none;
-    transition: color 0.3s;
+}
+
+/* 1. Floating planet in the background */
+.background-planet {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 300px; /* adjust based on your image size */
+  height: auto;
+  opacity: 0.5; /* semi-transparent to blend into background */
+  z-index: -1; /* behind all content */
+}
+
+/* 2. Mini solar system in the background */
+.solar-system {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  z-index: -1; /* behind content */
+}
+
+.sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: yellow;
+  border-radius: 50%;
+}
+
+.planet {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.planet1 {
+  background: red;
+  animation: orbit 5s linear infinite;
+}
+
+.planet2 {
+  background: blue;
+  animation: orbit 7s linear infinite;
+}
+
+.planet3 {
+  background: green;
+  animation: orbit 10s linear infinite;
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg) translateX(70px) rotate(0deg);
   }
-  .cosmic-text:hover {
-    color: #ff69b4;
+  100% {
+    transform: rotate(360deg) translateX(70px) rotate(-360deg);
   }
-  .star {
-    position: absolute;
-    background: white;
-    border-radius: 50%;
-    animation: twinkle 1s infinite;
-  }
-  @keyframes twinkle {
-    0% { opacity: 1; }
-    50% { opacity: 0.3; }
-    100% { opacity: 1; }
-  }
-  .poetry {
-    font-size: 1.2rem;
-    line-height: 2;
-    text-align: center;
-    margin: 2rem 0;
-  }
-  /* Falling star styles */
-  .falling-star {
-    position: absolute;
-    width: 3px;
-    height: 3px;
-    background: white;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: fall linear;
-  }
-  .falling-star::after {
-    content: '';
-    position: absolute;
-    width: 80px;
-    height: 2px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,255,255,0));
-    top: 50%;
-    left: 50%;
-    transform: translate(-100%, -50%) rotate(45deg);
-  }
-  @keyframes fall {
-    0% {
-      opacity: 1;
-      transform: translate(0, 0);
-    }
-    100% {
-      opacity: 0;
-      transform: translate(var(--fall-distance), var(--fall-distance));
-    }
-  }
+}
+
+/* 3. Flying rocket */
+.flying-rocket {
+  position: absolute;
+  width: 50px; /* adjust based on your image size */
+  height: auto;
+  z-index: 0; /* above background but below text */
+  opacity: 0.7; /* slightly transparent */
+  filter: drop-shadow(0 0 5px #fff); /* glowing effect */
+}
