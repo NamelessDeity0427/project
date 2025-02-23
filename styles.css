@@ -3,14 +3,13 @@ body {
   color: #fff;
   min-height: 100vh;
   padding: 2rem;
-  overflow: auto; /* Already present, keeps scrolling enabled */
+  overflow: auto; /* prevent scrollbars from falling stars */
   -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
   scrollbar-width: none; /* Hide scrollbar in Firefox */
 }
 
-/* Hide scrollbar in Webkit browsers (Chrome, Safari, Edge) */
 body::-webkit-scrollbar {
-  display: none;
+  display: none; /* Hide scrollbar in Webkit browsers */
 }
 
 .poetry-container {
@@ -82,18 +81,18 @@ body::-webkit-scrollbar {
   }
 }
 
-/* 1. Floating planet in the background */
+/* Floating planet in the background */
 .background-planet {
   position: absolute;
   top: 20%;
   left: 10%;
-  width: 300px; /* adjust based on your image size */
+  width: 300px;
   height: auto;
-  opacity: 0.5; /* semi-transparent to blend into background */
-  z-index: -1; /* behind all content */
+  opacity: 0.5;
+  z-index: -1;
 }
 
-/* 2. Mini solar system in the background */
+/* Mini solar system in the background */
 .solar-system {
   position: absolute;
   top: 50%;
@@ -101,7 +100,7 @@ body::-webkit-scrollbar {
   transform: translate(-50%, -50%);
   width: 200px;
   height: 200px;
-  z-index: -1; /* behind content */
+  z-index: -1;
 }
 
 .sun {
@@ -146,12 +145,12 @@ body::-webkit-scrollbar {
   }
 }
 
-/* 3. Flying rocket */
+/* Flying rocket */
 .flying-rocket {
   position: absolute;
-  width: 50px; /* adjust based on your image size */
+  width: 50px;
   height: auto;
-  z-index: 0; /* above background but below text */
-  opacity: 0.7; /* slightly transparent */
-  filter: drop-shadow(0 0 5px #fff); /* glowing effect */
+  z-index: 0;
+  opacity: 0.7;
+  filter: drop-shadow(0 0 5px #fff);
 }
