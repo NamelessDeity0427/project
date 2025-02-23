@@ -18,9 +18,15 @@ function spawnFallingStar() {
   const star = document.createElement('div');
   star.className = 'falling-star';
   
-  // Random starting position within viewport
-  const startX = Math.random() * (window.innerWidth - 80); // Account for tail width
-  const startY = Math.random() * (window.innerHeight * 0.5); // Top half of viewport
+  // Viewport dimensions
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  
+  // Tail width is 80px (from CSS), so adjust starting position
+  const tailWidth = 80;
+  const startX = Math.random() * (viewportWidth - tailWidth); // Ensure tail fits
+  const startY = Math.random() * (viewportHeight * 0.4); // Start in top 40% of viewport
+  
   star.style.left = startX + 'px';
   star.style.top = startY + 'px';
   
@@ -28,12 +34,14 @@ function spawnFallingStar() {
   const duration = Math.random() * 1.5 + 1;
   star.style.animationDuration = duration + 's';
   
-  // Fall distance limited to stay within viewport
-  const maxFallDistance = window.innerHeight - startY; // Ensure it doesn’t exceed bottom
-  const distance = Math.min(Math.random() * 300 + 300, maxFallDistance);
+  // Calculate max fall distance to stay within viewport
+  const maxFallDistance = viewportHeight - startY; // Distance to bottom edge
+  const minFallDistance = 100; // Minimum fall for visibility
+  const fallRange = maxFallDistance - minFallDistance;
+  const distance = minFallDistance + Math.random() * fallRange; // Random within safe range
   star.style.setProperty('--fall-distance', distance + 'px');
   
-  starfield.appendChild(star); // Append to starfield, not body
+  starfield.appendChild(star);
   
   // Remove the star after its animation completes
   setTimeout(() => {
