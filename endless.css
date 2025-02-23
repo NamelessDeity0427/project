@@ -1,0 +1,81 @@
+body {
+    background: linear-gradient(to bottom, #0a192f, #000000);
+    color: #fff;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    position: relative;
+  }
+  /* Cosmic background stars */
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Ccircle cx='10' cy='10' r='1' fill='white' /%3E%3Ccircle cx='50' cy='30' r='0.5' fill='white' /%3E%3Ccircle cx='80' cy='70' r='0.7' fill='white' /%3E%3C/svg%3E") repeat;
+    opacity: 0.3;
+    z-index: -2;
+  }
+  /* Video container fixed dimensions */
+  .video-container {
+    position: relative;
+    width: 88%;
+    max-width: 1200px; /* Prevents excessive stretching */
+    height: 60vh; /* Scales with screen height */
+    max-height: 700px; /* Prevents overly large videos on big screens */
+    min-height: 300px; /* Ensures it doesn’t get too small */
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+    background: #000;
+  }
+  
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensures full video is visible without cropping */
+    display: block;
+    background: black; /* Avoid blank space around the video */
+  }
+  
+  /* Cosmic overlay on video */
+  .cosmic-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450"><rect width="100%" height="100%" fill="transparent"/><circle cx="50" cy="50" r="2" fill="white" /><circle cx="150" cy="80" r="1" fill="white" /><circle cx="250" cy="120" r="1.5" fill="white" /><circle cx="350" cy="200" r="2" fill="white" /></svg>') repeat;
+    opacity: 0.2;
+    z-index: 2;
+  }
+  /* Back button styling */
+  .back-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #00ffff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    z-index: 3;
+    transition: color 0.3s;
+  }
+  .back-link:hover {
+    color: #ff69b4;
+  }
+
+  @media (max-width: 768px) {
+    .video-container {
+      width: 95%;
+      height: 40vh; /* Adjust height for mobile */
+    }
+  }
+  
